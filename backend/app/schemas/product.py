@@ -6,12 +6,12 @@ from .category import CategoryResponse
 
 class ProductBase(BaseModel):
     name: str = Field(..., min_length=5, max_length=200,
-                      description="Product name")
+                            description="Product name")
     description: Optional[str] = Field(None, description="Product description")
     price: float = Field(..., gt=0,
-                         description="Product price(must be greater than 0)")
-    category_id: int = Field(..., description="Category ID")
-    image: Optional[str] = Field(None, description="Product image URL")
+                            description="Product price(must be greater than 0")
+    category_id: int = Field(..., description='Category ID')
+    image_url: Optional[str] = Field(None, description='Product image URL')
 
 class ProductCreate(ProductBase):
     pass
@@ -31,5 +31,4 @@ class ProductResponse(BaseModel):
 
 class ProductListResponse(BaseModel):
     products: list[ProductResponse]
-    total: int = Field(..., description="Total number of products")
-    
+    total: int = Field(..., description='Total number of products')
